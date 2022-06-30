@@ -16,6 +16,8 @@ class DeviseController extends Controller
     public function index()
     {
         //
+
+        return Devise::all();
     }
 
     /**
