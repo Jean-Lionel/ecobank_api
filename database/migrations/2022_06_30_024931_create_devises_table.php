@@ -15,9 +15,10 @@ class CreateDevisesTable extends Migration
     {
         Schema::create('devises', function (Blueprint $table) {
             $table->id();
-            $table->string('currency');
+            $table->string('name')->unique();
             $table->string('country')->nullable();
             $table->foreignId('user_id')->nullable();
+             $table->integer('level')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });
