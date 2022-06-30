@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateDevisesTable extends Migration
+class CreateDevisePricesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,11 @@ class CreateDevisesTable extends Migration
      */
     public function up()
     {
-        Schema::create('devises', function (Blueprint $table) {
+        Schema::create('devise_prices', function (Blueprint $table) {
             $table->id();
-            $table->string('currency');
-            $table->string('country')->nullable();
-            $table->foreignId('user_id')->nullable();
+            $table->double('amount', 64,8);
+            $table->foreignId('devise_id');
+            $table->date('current_date')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });
@@ -30,6 +30,6 @@ class CreateDevisesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('devises');
+        Schema::dropIfExists('devise_prices');
     }
 }
