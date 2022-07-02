@@ -29,8 +29,8 @@ class DevisePriceController extends Controller
        //":1,"":"40000","":"40000","level":"4000" 
         DevisePrice::create([
                 "devise_id" => $request->devise_id,
-                "buy_at" => $request->buy_at ,
-                "sell_at" => $request->sell_at,
+                "buy_at" => numberFormat($request->buy_at),
+                "sell_at" => numberFormat($request->sell_at),
                 "level" => $request->level,
         ]);
 

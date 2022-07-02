@@ -27,15 +27,20 @@ class DeviseController extends Controller
                 "id" => $v->id,
                 "name" => $v->name,
                 "country" => $v->country,
-                "buy_at" => ($last["buy_at"] ?? ""),
-                "sell_at" =>  ($last["sell_at"] ?? ""),
-                "level" =>  ($last["level"] ?? ""),
+                "buy_at" => numberFormat(($last["buy_at"] ?? 0)),
+                "sell_at" =>  numberFormat(($last["sell_at"] ?? 0)),
+                "level" =>  numberFormat(($last["level"] ?? 0)),
             ];
             $data[] = $x;
            
         }
 
-        return $data ;
+        $getData = collect($data)->sortBy([
+             ['buy_at', 'desc'],
+             ['sell_at', 'desc'],
+        ]);
+
+        return $getData;
     }
 
     /**
