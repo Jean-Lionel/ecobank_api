@@ -15,8 +15,9 @@ class CreateDevisePricesTable extends Migration
     {
         Schema::create('devise_prices', function (Blueprint $table) {
             $table->id();
-            $table->double('amount', 64,8);
             $table->foreignId('devise_id');
+            $table->double('buy_at', 64,8);
+            $table->double('salle_at', 64,8);
             $table->date('current_date')->nullable();
             $table->timestamps();
             $table->softDeletes();
