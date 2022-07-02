@@ -33,7 +33,7 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     // API route for logout user
     Route::post('/logout', [App\Http\Controllers\API\AuthController::class, 'logout']);
 
-    Route::resource('devices_price',DevisePriceController::class);
+    Route::resource('devise_prices',DevisePriceController::class);
 });
 
 Route::get('/devises', [DeviseController::class, 'index']);

@@ -16,8 +16,26 @@ class DeviseController extends Controller
     public function index()
     {
         //
+        $devises = Devise::with('devisePrices')->get();
 
-        return Devise::all();
+        $data = [];
+        foreach ($devises as $v){
+            $keys = $v->devisePrices->keys()->last() ?? 0;
+            $last = ($v->devisePrices[$keys] ?? []);
+
+            $x = [
+                "id" => $v->id,
+                "name" => $v->name,
+                "country" => $v->country,
+                "buy_at" => ($last["buy_at"] ?? ""),
+                "sell_at" =>  ($last["sell_at"] ?? ""),
+                "level" =>  ($last["level"] ?? ""),
+            ];
+            $data[] = $x;
+           
+        }
+
+        return $data ;
     }
 
     /**

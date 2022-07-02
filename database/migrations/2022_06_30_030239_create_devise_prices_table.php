@@ -17,7 +17,8 @@ class CreateDevisePricesTable extends Migration
             $table->id();
             $table->foreignId('devise_id');
             $table->double('buy_at', 64,8);
-            $table->double('salle_at', 64,8);
+            $table->double('sell_at', 64,8);
+            $table->integer('level')->nullable();
             $table->date('current_date')->nullable();
             $table->timestamps();
             $table->softDeletes();

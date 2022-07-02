@@ -26,7 +26,18 @@ class DevisePriceController extends Controller
      */
     public function store(StoreDevisePriceRequest $request)
     {
-        //
+       //":1,"":"40000","":"40000","level":"4000" 
+        DevisePrice::create([
+                "devise_id" => $request->devise_id,
+                "buy_at" => $request->buy_at ,
+                "sell_at" => $request->sell_at,
+                "level" => $request->level,
+        ]);
+
+        return [
+            "success" => "enregistrement réussi",
+            "hello" => $request->all(),
+        ];
     }
 
     /**
